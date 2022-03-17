@@ -1,31 +1,46 @@
-#include <stdio.h>
-#include <math.h>
-
+#include "main.h"
 /**
- * main - entry point
- *
- * Return: value
+ * print_number - print an int numbers.
+ * @n: number tested
+ * Return: Always 0.
  */
-int main(void)
+void print_number(int n)
 {
-	long n = 612852475143;
-	long i, factor = -1;
+	int i, j, digit, digits, power;
+	unsigned int temp, numchar, number;
 
-	while (n % 2 == 0)
-		n = n / 2, factor = 2;
-
-	for (i = 3; i <= sqrt(n); i += 2)
+	digit = 0;
+	if (n < 0)
 	{
-		while (n % i == 0)
-			n = n / i, factor = i;
+		_putchar('-');
+		temp = -n;
+	}
+	else
+	{
+		temp = n;
 	}
 
-	if (n > 2)
-	{
-		factor = n;
-		printf("%li", factor);
-	}
-	putchar(10);
+	number = temp;
 
-	return (0);
+	while (number >= 10)
+	{
+		number = number / 10;
+		digit++;
+	}
+	digits = digit + 1;
+	power = 1;
+	i = 1;
+
+	while (i < digits)
+	{
+		power = power * 10;
+		i++;
+	}
+	j = power;
+	while (j >= 1)
+	{
+		numchar = (temp / j) % 10;
+		_putchar(numchar + '0');
+		j = j / 10;
+	}
 }
