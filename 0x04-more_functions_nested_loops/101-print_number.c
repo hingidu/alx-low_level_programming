@@ -1,37 +1,31 @@
-#include "main.h"
+#include <stdio.h>
+#include <math.h>
+
 /**
- * print_number - prints numbers
- * @n: number to be printed
- * Return:void
+ * main - entry point
+ *
+ * Return: value
  */
-
-void print_number(int n)
+int main(void)
 {
+	long n = 612852475143;
+	long i, factor = -1;
 
-	int d = 1, i = 0, ii = 0;
+	while (n % 2 == 0)
+		n = n / 2, factor = 2;
 
-	if (n < 0)
+	for (i = 3; i <= sqrt(n); i += 2)
 	{
-		_putchar('-');
-		n = -n;
+		while (n % i == 0)
+			n = n / i, factor = i;
 	}
 
-	while (n / d != 0)
+	if (n > 2)
 	{
-		d *= 10;
-		i++;
+		factor = n;
+		printf("%li", factor);
 	}
-	d = d / 10;
+	putchar(10);
 
-	while (ii < i)
-	{
-		_putchar('0' + n / d);
-		n = n - (n / d) * d;
-		d = d / 10;
-		ii++;
-	}
-
-	if (i == 0)
-		_putchar('0' + n);
-
+	return (0);
 }
