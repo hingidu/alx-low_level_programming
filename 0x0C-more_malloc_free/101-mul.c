@@ -1,5 +1,3 @@
- 4.56 KB
-   
 #include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
